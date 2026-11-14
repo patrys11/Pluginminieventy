@@ -1,0 +1,15 @@
+name: EventyPlugin
+version: 1.0.0
+main: pl.eventy.EventsPlugin
+api-version: '1.21'
+softdepend: [Vault]
+description: Losowe eventy serwerowe (zlota godzina, skarbonka, bounty i inne)
+commands:
+  event:
+    description: Zarzadzanie eventami
+    usage: /event <start|stop|list|status|reload>
+    permission: eventy.admin
+permissions:
+  eventy.admin:
+    description: Dostep do komendy /event
+    default: op
