@@ -1,0 +1,81 @@
+# ===== Losowe odpalanie eventow =====
+scheduler:
+  enabled: true
+  # co ile minut plugin "rzuca kostka"
+  check-interval-minutes: 30
+  # szansa (0-100), ze przy kazdym rzucie wystartuje jakis event
+  chance-percent: 40
+  # minimalna liczba graczy online
+  min-players: 1
+  # wagi losowania (0 = event nie bedzie losowany, ale dalej mozna go odpalic komenda)
+  weights:
+    golden_hour: 2
+    double_hearts: 3
+    haste: 3
+    piggy_bank: 2
+    bounty: 2
+
+# ===== Ustawienia eventow =====
+events:
+  golden_hour:
+    duration-minutes: 60
+  double_hearts:
+    duration-minutes: 30
+    # Health Boost: kazdy poziom = +4 HP (2 serca). amplifier 4 = +20 HP, czyli podwojne zycie
+    amplifier: 4
+  haste:
+    duration-minutes: 30
+    # amplifier 1 = Haste II
+    amplifier: 1
+  piggy_bank:
+    duration-minutes: 10
+    reward: 30000
+    # zycie swinki
+    health: 100
+    world: world
+    # swinka pojawia sie w losowym miejscu w tym promieniu od punktu 0,0
+    radius: 1000
+    announce-coords: true
+  bounty:
+    duration-minutes: 20
+    reward: 5000
+    # co ile sekund ogloszic koordynaty celu (0 = wylaczone, tylko swiecenie)
+    reveal-coords-seconds: 0
+
+# ===== Teksty (kolory przez &) =====
+names:
+  golden_hour: "&6&lZłota godzina"
+  double_hearts: "&c&lPodwójne serca"
+  haste: "&e&lHaste II"
+  piggy_bank: "&d&lŚwinka Skarbonka"
+  bounty: "&4&lBounty"
+  piggy_pig: "&d&lŚwinka Skarbonka"
+
+messages:
+  prefix: "&6[Event] &f"
+
+  golden_hour_start: "&e&lZŁOTA GODZINA! &fPrzez {minutes} min masz keepInventory, po śmierci nie tracisz ekwipunku!"
+  golden_hour_end: "&eZłota godzina się skończyła. Od teraz ekwipunek znowu wypada."
+
+  double_hearts_start: "&c&lPODWÓJNE SERCA! &fPrzez {minutes} min masz dwa razy więcej życia!"
+  double_hearts_end: "&cPodwójne serca zniknęły."
+
+  haste_start: "&e&lHASTE II! &fPrzez {minutes} min kopiesz dużo szybciej!"
+  haste_end: "&eHaste się skończyło."
+
+  piggy_bank_start: "&d&lŚWINKA SKARBONKA! &fGdzieś na mapie pojawiła się świnka z nagrodą &e{reward}&f! Kto ją zabije, ten zgarnia. Masz {minutes} min."
+  piggy_bank_coords: "&dŚwinka Skarbonka jest na &fX: {x} Y: {y} Z: {z} &7({world})"
+  piggy_bank_win: "&d{player} &fzabił świnkę i zgarnia &e{reward}&f!"
+  piggy_bank_lost: "&dŚwinka Skarbonka zginęła, nikt nie dostał nagrody."
+  piggy_bank_end: "&dŚwinka Skarbonka uciekła, nikt jej nie zabił."
+
+  bounty_start: "&4&lBOUNTY! &fNa gracza &c{player} &fwyznaczono nagrodę &e{reward}&f! Ma {minutes} min, żeby przeżyć."
+  bounty_coords: "&4Bounty: &c{player} &fjest na &fX: {x} Y: {y} Z: {z}"
+  bounty_win: "&c{killer} &fzabił &c{player} &fi zgarnia bounty &e{reward}&f!"
+  bounty_quit: "&4Cel bounty wyszedł z serwera, bounty anulowane."
+  bounty_end: "&4Bounty wygasło, &c{player} &fprzeżył."
+  bounty_you: "&c&lMasz bounty na głowie! Przetrwaj, a nikt nie dostanie nagrody."
+
+  subtitle: "&7Event wystartował"
+  no-economy: "&cBrak Vault/ekonomii, nagroda nie została wypłacona."
+  no-permission: "&cBrak uprawnień."
